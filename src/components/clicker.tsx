@@ -4,9 +4,9 @@ const Clicker = () =>
 {
     return (
         <Box>
-            <Box component="img" src="/images/fish.png" alt="fishNew"/>
+            <Box component="img" src={process.env.PUBLIC_URL + '/images/fish.png'} alt="fishNew"/>
             <Typography>
-                Hi
+                Hi 2
             </Typography>
         </Box>
     );
