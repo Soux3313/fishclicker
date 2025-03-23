@@ -1,10 +1,14 @@
-import {Box} from "@mui/material";
-import fish from "../assets/images/fish.png";
+import {Box, Typography} from "@mui/material";
 
 const Clicker = () =>
 {
     return (
-        <Box component="img" src={fish} alt="fish"/>
+        <Box>
+            <Box component="img" src="/images/fish.png" alt="fishNew"/>
+            <Typography>
+                Hi
+            </Typography>
+        </Box>
     );
 }
 

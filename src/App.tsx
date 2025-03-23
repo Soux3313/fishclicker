@@ -9,7 +9,7 @@ function App() {
       <>
           <BrowserRouter>
               <Routes>
-                  <Route path="/" element={<Constructor/>}/>
+                  <Route path="/fishclicker" element={<Constructor/>}/>
               </Routes>
           </BrowserRouter>
       </>
