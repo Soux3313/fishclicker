@@ -21,14 +21,32 @@ const Clicker = () =>
             }}>
                 Fish Amount: {fish}
             </Typography>
-            <Box component={Button}
-                 onClick={() => (addFish(clickPotency))}
-                >
+            <Box
+                component={Button}
+                onClick={(e) => {
+                    const button = e.currentTarget;
+                    button.style.animation = "shake 0.2s ease-in-out";
+                    setTimeout(() => (button.style.animation = ""), 200);
+                    addFish(clickPotency);
+                }}
+                sx={{
+                    "@keyframes shake": {
+                        "0%": { transform: "translateX(0)" },
+                        "25%": { transform: "translateX(-5px)" },
+                        "50%": { transform: "translateX(5px)" },
+                        "75%": { transform: "translateX(-5px)" },
+                        "100%": { transform: "translateX(0)" },
+                    },
+                }}
+            >
                 <Box
                     component="img"
-                    src={process.env.PUBLIC_URL + '/images/pondv1.png'}
+                    src={process.env.PUBLIC_URL + "/images/pond2.png"}
                     alt="fishButton"
-
+                    sx={{
+                        width: "800px",
+                        imageRendering: "pixelated",
+                    }}
                 />
             </Box>
         </Box>

@@ -12,7 +12,7 @@ const Constructor = () =>
         <GlobalStateProvider>
             <Box sx={{
                 display: 'flex',
-                justifyContent: 'space-around'
+                justifyContent: 'space-evenly'
             }}>
                 <Fisherhut/>
                 <Clicker/>
