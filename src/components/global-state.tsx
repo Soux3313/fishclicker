@@ -50,7 +50,12 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     const[magnets, setMagnets] = useState(0);
     const[magnetPrice, setMagnetPrice] = useState(300);
 
-    const priceScale = 1.5;
+    const priceScale = 1.15;
+    const catBase = 5;
+    const trapBase = 20;
+    const bearBase = 50;
+    const fisherBase = 100;
+    const magnetBase = 300;
 
     const addFish = (addedFish: number) => {
         setFish(fish => fish + addedFish);
@@ -67,7 +72,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             {
                 setCats(cats+added)
                 removeFish(catPrice)
-                setCatPrice(Math.round(catPrice*priceScale))
+                setCatPrice(Math.round(catBase*Math.pow((priceScale), cats)))
             }
             else break;
         }
@@ -80,7 +85,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
              for(let i = 0; i < removed; i++)
              {
                  addFish(Math.round(catPrice/2));
-                 setCatPrice(Math.round(catPrice/priceScale))
+                 setCatPrice(Math.round(catBase*Math.pow((priceScale), cats)))
              }
          }
     }
@@ -90,7 +95,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
         {
             setTraps(traps+added)
             removeFish(trapPrice)
-            setTrapPrice(Math.round(trapPrice*priceScale))
+            setTrapPrice(Math.round(trapBase*Math.pow((priceScale), traps)))
         }
     }
 
@@ -101,7 +106,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             for(let i = 0; i < removed; i++)
             {
                 addFish(Math.round(trapPrice/2));
-                setTrapPrice(Math.round(trapPrice/priceScale))
+                setTrapPrice(Math.round(trapBase*Math.pow((priceScale), traps)))
             }
         }
     }
@@ -112,7 +117,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             {
                 setBears(bears+added)
                 removeFish(bearPrice)
-                setBearPrice(Math.round(bearPrice*priceScale))
+                setBearPrice(Math.round(bearBase*Math.pow((priceScale), bears)))
             }
             else break;
         }
@@ -125,7 +130,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             for(let i = 0; i < removed; i++)
             {
                 addFish(Math.round(bearPrice/2));
-                setBearPrice(Math.round(bearPrice/priceScale))
+                setBearPrice(Math.round(bearBase*Math.pow((priceScale), bears)))
             }
         }
     }
@@ -137,7 +142,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             {
                 setFishermen(fishermen+added)
                 removeFish(fisherPrice)
-                setFisherPrice(Math.round(fisherPrice*priceScale))
+                setFisherPrice(Math.round(fisherBase*Math.pow((priceScale), fishermen)))
             }
             else break;
         }
@@ -150,7 +155,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             for(let i = 0; i < removed; i++)
             {
                 addFish(Math.round(fisherPrice/2));
-                setFisherPrice(Math.round(fisherPrice/priceScale))
+                setFisherPrice(Math.round(fisherBase*Math.pow((priceScale), fishermen)))
             }
         }
     }
@@ -162,7 +167,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             {
                 setMagnets(magnets+added)
                 removeFish(magnetPrice)
-                setMagnetPrice(Math.round(magnetPrice*priceScale))
+                setMagnetPrice(Math.round(magnetBase*Math.pow((priceScale), magnets)))
             }
             else break;
         }
@@ -175,7 +180,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
             for(let i = 0; i < removed; i++)
             {
                 addFish(Math.round(magnetPrice/2));
-                setMagnetPrice(Math.round(magnetPrice/priceScale))
+                setMagnetPrice(Math.round(magnetBase*Math.pow((priceScale), magnets)))
             }
         }
     }
