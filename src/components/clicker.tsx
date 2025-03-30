@@ -2,6 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { useGlobalState } from "./global-state";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import NumberFlow from '@number-flow/react'
 
 // Component for the jumping fish animation
 interface JumpingFishProps {
@@ -83,8 +84,19 @@ const Clicker = () => {
                     fontFamily: "Monospace",
                 }}
             >
-                Fish Amount: {fish}
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "row"
+                }}>
+                    Fish Amount:
+                    <NumberFlow
+                        value={fish}
+                        transformTiming={{ duration: 500, easing: 'ease-out' }}
+                    />
+                </Box>
             </Typography>
+
             <Box
                 component={Button}
                 onClick={handleClick}
