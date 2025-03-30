@@ -1,4 +1,4 @@
-import {createContext, ReactNode, use, useContext, useState} from "react";
+import {createContext, ReactNode, useContext, useState} from "react";
 
 interface GlobalState {
     fish: number;
@@ -37,7 +37,10 @@ interface GlobalState {
 const GlobalStateContext = createContext<GlobalState | undefined>(undefined);
 
 export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
+    //GENERAL
     const[clickPotency, setClickPotency] = useState(1);
+
+    //BUILDINGS
     const[fish, setFish] = useState(0);
     const[cats, setCats] = useState(0);
     const[catPrice, setCatPrice] = useState(5);

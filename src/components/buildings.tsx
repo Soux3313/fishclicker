@@ -1,4 +1,4 @@
-import {Box, Button, Typography} from "@mui/material";
+import {Box, Button, styled, Typography} from "@mui/material";
 import {useGlobalState} from "./global-state";
 import {useEffect} from "react";
 
@@ -65,19 +65,39 @@ const Buildings = () =>
     return () => clearInterval(interval); //cleanup
     }, [cats, traps, bears, fishermen, magnets]);
 
+    const ButtonBox = styled(Box)({
+        display:'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: '110%',
+
+        '& .MuiButton-root': {
+            color: "black"
+        }
+    })
+
+    const TextBox = styled(Box)({
+        display:'flex',
+        flexDirection: 'column',
+
+        "& .MuiTypography-root": {
+            fontFamily: 'monospace',
+            fontWeight: 'medium'
+        },
+    })
+
     return (
         //GENERAL WRAPPER
         <Box sx={{
             border: 1,
             display: 'flex',
             flexDirection: 'column',
+            justifyContent: 'space-evenly',
             flexGrow: 0.2,
-            padding: 2,
+            padding: 2
         }}>
 
             {/*CATS*/}
-
-
             <Box sx={{
                 border: 1,
                 display:'flex',
@@ -86,28 +106,33 @@ const Buildings = () =>
                 alignItems: 'center',
                 padding: 2,
             }}>
-                <Box sx={{
-                    display:'flex',
-                    flexDirection: 'column',
-                }}>
+                <TextBox>
                     <Typography>
                         Cats: {cats}
                     </Typography>
                     <Typography>
                         Price: {catPrice}
                     </Typography>
-                </Box>
-                <Box sx={{
-                    display:'flex',
-                    flexDirection: 'column',
-                }}>
-                    <Button variant="outlined" onClick={() => (buyCats(1))}>
+                </TextBox>
+
+                <Box
+                    component="img"
+                    src={process.env.PUBLIC_URL + "/images/icons/cat.png"}
+                    alt="cat-icon"
+                    sx={{
+                        width: "75px",
+                        imageRendering: "pixelated",
+                    }}
+                />
+
+                <ButtonBox>
+                    <Button variant="contained" onClick={() => (buyCats(1))}>
                        BUY
                     </Button>
-                    <Button variant="outlined" onClick={() => (sellCats(1))}>
+                    <Button variant="contained" onClick={() => (sellCats(1))}>
                         SELL
                     </Button>
-                </Box>
+                </ButtonBox>
             </Box>
 
 
@@ -122,28 +147,22 @@ const Buildings = () =>
                 alignItems: 'center',
                 padding: 2,
             }}>
-                <Box sx={{
-                    display:'flex',
-                    flexDirection: 'column',
-                }}>
+                <TextBox>
                     <Typography>
                         Traps: {traps}
                     </Typography>
                     <Typography>
                         Price: {trapPrice}
                     </Typography>
-                </Box>
-                <Box sx={{
-                    display:'flex',
-                    flexDirection: 'column',
-                }}>
-                    <Button variant="outlined" onClick={() => (buyTraps(1))}>
+                </TextBox>
+                <ButtonBox>
+                    <Button variant="contained" onClick={() => (buyTraps(1))}>
                         BUY
                     </Button>
-                    <Button variant="outlined" onClick={() => (sellTraps(1))}>
+                    <Button variant="contained" onClick={() => (sellTraps(1))}>
                         SELL
                     </Button>
-                </Box>
+                </ButtonBox>
             </Box>
 
 
@@ -158,28 +177,22 @@ const Buildings = () =>
                 alignItems: 'center',
                 padding: 2,
             }}>
-                <Box sx={{
-                    display:'flex',
-                    flexDirection: 'column',
-                }}>
+                <TextBox >
                     <Typography>
                         Bears: {bears}
                     </Typography>
                     <Typography>
                         Price: {bearPrice}
                     </Typography>
-                </Box>
-                <Box sx={{
-                    display:'flex',
-                    flexDirection: 'column',
-                }}>
-                    <Button variant="outlined" onClick={() => (buyBears(1))}>
+                </TextBox>
+                <ButtonBox>
+                    <Button variant="contained" onClick={() => (buyBears(1))}>
                         BUY
                     </Button>
-                    <Button variant="outlined" onClick={() => (sellBears(1))}>
+                    <Button variant="contained" onClick={() => (sellBears(1))}>
                         SELL
                     </Button>
-                </Box>
+                </ButtonBox>
             </Box>
 
 
@@ -194,28 +207,22 @@ const Buildings = () =>
                 alignItems: 'center',
                 padding: 2,
             }}>
-                <Box sx={{
-                    display:'flex',
-                    flexDirection: 'column',
-                }}>
+                <TextBox>
                     <Typography>
                         Fishermen: {fishermen}
                     </Typography>
                     <Typography>
                         Price: {fisherPrice}
                     </Typography>
-                </Box>
-                <Box sx={{
-                    display:'flex',
-                    flexDirection: 'column',
-                }}>
-                    <Button variant="outlined" onClick={() => (buyFishermen(1))}>
+                </TextBox>
+                <ButtonBox>
+                    <Button variant="contained" onClick={() => (buyFishermen(1))}>
                         BUY
                     </Button>
-                    <Button variant="outlined" onClick={() => (sellFishermen(1))}>
+                    <Button variant="contained" onClick={() => (sellFishermen(1))}>
                         SELL
                     </Button>
-                </Box>
+                </ButtonBox>
             </Box>
 
 
@@ -230,28 +237,22 @@ const Buildings = () =>
                 alignItems: 'center',
                 padding: 2,
             }}>
-                <Box sx={{
-                    display:'flex',
-                    flexDirection: 'column',
-                }}>
+                <TextBox>
                     <Typography>
                         Magnets: {magnets}
                     </Typography>
                     <Typography>
                         Price: {magnetPrice}
                     </Typography>
-                </Box>
-                <Box sx={{
-                    display:'flex',
-                    flexDirection: 'column',
-                }}>
-                    <Button variant="outlined" onClick={() => (buyMagnets(1))}>
+                </TextBox>
+                <ButtonBox>
+                    <Button variant="contained" onClick={() => (buyMagnets(1))}>
                         BUY
                     </Button>
-                    <Button variant="outlined" onClick={() => (sellMagnets(1))}>
+                    <Button variant="contained" onClick={() => (sellMagnets(1))}>
                         SELL
                     </Button>
-                </Box>
+                </ButtonBox>
             </Box>
         </Box>
     );
