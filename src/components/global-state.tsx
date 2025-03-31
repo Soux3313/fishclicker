@@ -5,6 +5,7 @@ interface GlobalState {
     clickPotency: number;
     addFish: (addedFish: number) => void;
     setClickPotency: (newValue: number) => void;
+    priceScale: number;
 
     cats: number;
     buyCats: (added: number) => void;
@@ -69,16 +70,21 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     }
 
     const buyCats = (added: number) => {
-        for(let i = 0; i < added; i++)
-        {
-            if(fish >= Math.round(catPrice))
-            {
-                setCats(cats+added)
-                removeFish(catPrice)
-                setCatPrice(Math.round(catBase*Math.pow((priceScale), cats)))
-            }
-            else break;
+        let newCats = cats;
+        let newPrice = catPrice;
+
+        for (let i = 0; i < added; i++) {
+            console.log('Buying Cat', i);
+            if (fish >= Math.round(newPrice)) {
+                newCats++;
+                removeFish(newPrice);
+                newPrice = Math.round(catBase * Math.pow(priceScale, newCats));
+                console.log(newPrice)
+            } else break;
         }
+
+        setCats(newCats);
+        setCatPrice(newPrice);
     }
 
     const sellCats = (removed: number) => {
@@ -191,7 +197,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
 
 
     return (
-        <GlobalStateContext.Provider value={{ fish, clickPotency, addFish, setClickPotency,
+        <GlobalStateContext.Provider value={{ fish, clickPotency, addFish, setClickPotency, priceScale,
             cats, buyCats, sellCats, catPrice,
             traps, buyTraps, sellTraps, trapPrice,
             bears, buyBears, sellBears, bearPrice,

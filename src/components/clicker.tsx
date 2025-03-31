@@ -83,9 +83,8 @@ const Clicker = () => {
         >
             <Typography
                 sx={{
-                    fontWeight: "medium",
-                    fontSize: "h4.fontSize",
-                    fontFamily: "Monospace",
+                    fontSize: "h2.fontSize",
+                    WebkitTextStroke: '1px black',
                 }}
             >
                 <Box
