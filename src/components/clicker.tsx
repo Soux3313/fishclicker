@@ -39,11 +39,15 @@ const Clicker = () => {
         const button = e.currentTarget.querySelector("img");
         if (!button) return;
 
-        const rect = button.getBoundingClientRect();
+
+        const parent = e.currentTarget.closest("div");
+        if (!parent) return;
+
+        const parentRect = parent.getBoundingClientRect();
 
         const newPosition: [number, number] = [
-            rect.bottom - e.clientY - 80,
-            e.clientX - rect.left -50, // -50: center adjustment
+            parentRect.bottom - e.clientY - 10,
+            e.clientX - parentRect.left - 50,
         ];
 
 
@@ -102,18 +106,20 @@ const Clicker = () => {
                 onClick={handleClick}
                 disableRipple
                 sx={{
-                    "@keyframes shake": {
-                        "0%": { transform: "translateX(0)" },
-                        "25%": { transform: "translateX(-2px)" },
-                        "50%": { transform: "translateX(2px)" },
-                        "75%": { transform: "translateX(-2px)" },
-                        "100%": { transform: "translateX(2px)" },
+                    '&:hover': {
+                        backgroundColor: 'transparent',
+                        transform: 'scale(1.03)',
+                    },
+
+                    transition: 'transform 0.1s',
+                    '&:active': {
+                        transform: 'scale(0.98)',
                     },
                 }}
             >
                 <Box
                     component="img"
-                    src={process.env.PUBLIC_URL + "/images/assets/pond2.png"}
+                    src={process.env.PUBLIC_URL + "/images/assets/pond3.png"}
                     alt="fishButton"
                     sx={{
                         width: "700px",

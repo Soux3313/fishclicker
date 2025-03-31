@@ -12,11 +12,33 @@ const Constructor = () =>
             <Box sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                overflow: 'hidden'
+                overflow: 'hidden',
+
+                backgroundImage: `url(${process.env.PUBLIC_URL + '/images/assets/Wallpaper27.jpg'})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                //height: "385px",
             }}>
-                <Fisherhut/>
-                <Clicker/>
-                <Buildings/>
+                <Box sx={{
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    marginBottom: '5%',
+                    alignSelf: 'flex-end'
+                }}
+                >
+                    <Fisherhut />
+                </Box>
+
+
+                <Box sx={{
+                    marginRight: 'auto'
+                }}
+                >
+                    <Clicker/>
+                </Box>
+
+                <Buildings />
+
             </Box>
         </GlobalStateProvider>
     );
